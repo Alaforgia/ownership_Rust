@@ -1,14 +1,43 @@
-// Mutable References
+
+
+
+
+
+
+
+
+//Rules of References
+// At any given time, you can have either but not both of the following: one mutable reference or any number of immutable references.
+// References must always be valid.
+
+
+// Dangling References
 fn main() {
-    // You can have only one mutable reference to a particular piece of data in a particular scope. 
-    let mut s = String::from("hello");
-
-    change(&mut s);
+    let _reference_to_nothing  = dangle();
 }
 
-fn change(some_string: &mut String) {
-    some_string.push_str(", world");
-}
+fn dangle() -> String {  // dangle returns a reference to a String
+    let s =String::from("hello"); // s is a new String
+
+    s // we return a reference to the String, s
+}  // Here, s goes out of scope, and is dropped. Its memory goes away. Danger!
+
+
+
+
+
+
+// Mutable References
+// fn main() {
+//     // You can have only one mutable reference to a particular piece of data in a particular scope. 
+//     let mut s = String::from("hello");
+
+//     change(&mut s);
+// }
+
+// fn change(some_string: &mut String) {
+//     some_string.push_str(", world");
+// }
 
 
 
