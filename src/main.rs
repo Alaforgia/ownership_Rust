@@ -1,27 +1,49 @@
-// The Slice Type
-// Slice type does not have ownership
-// Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection.
-fn main() {
-    let mut s = String::from("hello world");
-    let _word = first_word(&s); // word will get the value 5
-
-    s.clear() // this empties the String, making it equal to ""
-} // word still has the value 5 here, but there's no more string that we could meaningfully use the value 5 with. 
-// word is now totally invalid!
 
 
-fn first_word(s: &String) -> usize {
-    let bytes = s.as_bytes(); // as_bytes method converts our String to an array of bytes
 
-    for (i, &item) in bytes.iter().enumerate()  { //iter is a method that returns each element in a collection and that 
-// enumerate wraps the result of iter and returns each element as part of a tuple instead.
-// The first element of the tuple returned from enumerate() is the index, the second is a reference to the element.
-        if item == b' ' {
-            return i;
-        }
-    }
-    s.len()
-}
+
+// // The Slice Type
+// // Slice type does not have ownership
+// // Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection.
+// fn main() {
+//     let mut s = String::from("hello world");
+//     let _word = first_word(&s); // word will get the value 5
+
+//     // A string slice is a reference to part of a String
+//     let _hello = &s[0..5];
+//     let _world = &s[6..11];
+
+//     // if you want to start at the first index (zero), you can drop the value before the two periods. In other words, these are
+//     // equal:
+//     // let slice = &s[0..2];
+//     // let slice = &s[..2];
+//     //
+// //  You can also drop both values to take a slice of the entire string. So these are equal:
+// // let s = String::from("hello");
+// // let len = s.len();
+// // let slice = &s[0..len];
+// // let slice = &s[..];
+
+//     s.clear() // this empties the String, making it equal to ""
+
+//     // println!("the first word is: {}", word);
+
+// } // word still has the value 5 here, but there's no more string that we could meaningfully use the value 5 with. 
+// // word is now totally invalid!
+
+
+// fn first_word(s: &String) -> &str {
+//     let bytes = s.as_bytes(); // as_bytes method converts our String to an array of bytes
+
+//     for (i, &item) in bytes.iter().enumerate()  { //iter is a method that returns each element in a collection and that 
+// // enumerate wraps the result of iter and returns each element as part of a tuple instead.
+// // The first element of the tuple returned from enumerate() is the index, the second is a reference to the element.
+//         if item == b' ' {
+//             return &s[0..i];
+//         }
+//     }
+//     &s[..]
+// }
 
 
 
