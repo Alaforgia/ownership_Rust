@@ -1,6 +1,27 @@
+// The Slice Type
+// Slice type does not have ownership
+// Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection.
+fn main() {
+    let mut s = String::from("hello world");
+    let _word = first_word(&s); // word will get the value 5
+
+    s.clear() // this empties the String, making it equal to ""
+} // word still has the value 5 here, but there's no more string that we could meaningfully use the value 5 with. 
+// word is now totally invalid!
 
 
+fn first_word(s: &String) -> usize {
+    let bytes = s.as_bytes(); // as_bytes method converts our String to an array of bytes
 
+    for (i, &item) in bytes.iter().enumerate()  { //iter is a method that returns each element in a collection and that 
+// enumerate wraps the result of iter and returns each element as part of a tuple instead.
+// The first element of the tuple returned from enumerate() is the index, the second is a reference to the element.
+        if item == b' ' {
+            return i;
+        }
+    }
+    s.len()
+}
 
 
 
@@ -12,15 +33,15 @@
 
 
 // Dangling References
-fn main() {
-    let _reference_to_nothing  = dangle();
-}
+// fn main() {
+//     let _reference_to_nothing  = dangle();
+// }
 
-fn dangle() -> String {  // dangle returns a reference to a String
-    let s =String::from("hello"); // s is a new String
+// fn dangle() -> String {  // dangle returns a reference to a String
+//     let s =String::from("hello"); // s is a new String
 
-    s // we return a reference to the String, s
-}  // Here, s goes out of scope, and is dropped. Its memory goes away. Danger!
+//     s // we return a reference to the String, s
+// }  // Here, s goes out of scope, and is dropped. Its memory goes away. Danger!
 
 
 
