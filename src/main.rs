@@ -3,6 +3,26 @@
 
 
 
+
+
+// // References and Borrowing
+// fn main() {
+// // This is how you would define and use a calculate_length function that has a reference to an object as a parameter 
+// // instead of taking ownership of the value.
+//     let s1 = String::from("hello");
+// // The ampersands are references, they allow you to refer to some value without taking ownership of it.
+//     let len = calculate_length(&s1);
+
+//     println!("the length of '{}' is {}.", s1, len);
+// }
+
+// fn calculate_length(s: &String) -> usize { // s is a reference to a String
+//     s.len()
+// } // Here, s goes out of scope. But because it does not have ownership of what it refers to, nothing happens.
+
+
+
+
 // Return Values and Scope
 // fn main() {
 //     let _s1 = gives_ownership(); // gives_ownership moves its return value into s1
